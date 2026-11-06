@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dance Films Guide</title>
+<meta name="description" content="A personal learning guide for filming and editing kathak dance videos.">
+<meta name="theme-color" content="#6b1023">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png" type="image/png">
+<!-- iOS standalone (full-screen) mode -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Dance Films">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#fbf6ec; --ivory-2:#f4ecdc; --card:#fffdf8; --ink:#2b1d1a; --ink-2:#6e5d55;
+  --maroon:#6b1023; --maroon-2:#8a1a32; --gold:#b8892f; --gold-2:#d4a849; --gold-soft:#f3e6c4;
+  --line:#e8dcc4; --radius:16px;
+  --serif:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --sans:Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --top: env(safe-area-inset-top);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--top) + 74px)}
+body{margin:0;background:var(--ivory);color:var(--ink);font:16px/1.6 var(--sans);-webkit-tap-highlight-color:transparent}
+a{color:var(--maroon);text-underline-offset:3px;text-decoration-color:var(--gold-2)}
+h1,h2,h3{font-family:var(--serif);color:var(--maroon);line-height:1.15;margin:0}
+
+/* ---------- Header ---------- */
+.hero{background:linear-gradient(160deg,var(--maroon) 0%,#4a0a18 100%);color:var(--ivory);
+  padding:calc(var(--top) + 28px) 20px 34px;text-align:center;position:relative;overflow:hidden}
+.hero .bells{width:150px;height:auto;display:block;margin:0 auto 10px}
+.hero .eyebrow{font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-2);margin:0 0 6px}
+.hero h1{color:var(--ivory);font-size:2.15rem;font-weight:600;font-style:italic}
+.hero p.hi{margin:10px 0 0;color:#ead9c0;font-size:.95rem}
+.hero .paisley{position:absolute;opacity:.12;width:140px;pointer-events:none}
+.hero .paisley.l{left:-36px;bottom:-30px;transform:rotate(-20deg)}
+.hero .paisley.r{right:-36px;top:10px;transform:scaleX(-1) rotate(-20deg)}
+
+/* ---------- Sticky nav ---------- */
+nav.top{position:sticky;top:0;z-index:10;background:rgba(251,246,236,.94);backdrop-filter:saturate(1.4) blur(10px);
+  -webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line);padding-top:var(--top)}
+nav.top ul{list-style:none;margin:0;padding:10px 12px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;max-width:760px;margin-inline:auto}
+nav.top ul::-webkit-scrollbar{display:none}
+nav.top a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;white-space:nowrap;
+  border:1px solid var(--line);background:var(--card);color:var(--maroon);text-decoration:none;font-weight:600;font-size:.88rem}
+nav.top a.active{background:var(--maroon);color:var(--ivory);border-color:var(--maroon)}
+
+main{max-width:760px;margin:0 auto;padding:18px 16px 8px}
+
+/* ---------- Accordion sections ---------- */
+details.sec{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin:0 0 16px;
+  box-shadow:0 1px 2px rgba(107,16,35,.05),0 8px 24px rgba(107,16,35,.05)}
+details.sec > summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:18px;min-height:64px}
+details.sec > summary::-webkit-details-marker{display:none}
+.num{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+  font:600 1.2rem var(--serif);font-variant-numeric:lining-nums;color:var(--maroon);background:var(--gold-soft);border:1px solid var(--gold-2)}
+details.sec > summary h2{font-size:1.5rem;font-weight:600;flex:1}
+.chev{flex:none;width:22px;height:22px;color:var(--gold);transition:transform .25s}
+details.sec[open] .chev{transform:rotate(180deg)}
+.body{padding:0 18px 20px}
+.divider{display:block;width:100%;height:14px;margin:2px 0 14px;color:var(--gold-2)}
+h3{font-size:1.25rem;margin:18px 0 8px}
+p{margin:8px 0}
+.muted{color:var(--ink-2)}
+
+/* resources */
+.res{list-style:none;padding:0;margin:8px 0}
+.res li{border-top:1px solid var(--line);padding:12px 0}
+.res li:first-child{border-top:0}
+.res .kind{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:2px}
+.res b{display:block;font-weight:600}
+.res a.go{display:inline-flex;align-items:center;gap:4px;min-height:44px;font-weight:600;font-size:.92rem}
+
+/* pattern cards */
+.cards{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}
+@media (min-width:560px){.cards{grid-template-columns:1fr 1fr}}
+.card{background:var(--ivory);border:1px solid var(--line);border-left:4px solid var(--gold-2);border-radius:12px;padding:14px}
+.card .ic{font:600 .78rem var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--maroon-2)}
+.card h4{font:600 1.15rem/1.2 var(--serif);color:var(--maroon);margin:4px 0 6px}
+.card p{font-size:.92rem;margin:0;color:var(--ink-2)}
+
+.tip{background:var(--gold-soft);border-radius:12px;padding:12px 14px;margin-top:14px;font-size:.95rem}
+.tip strong{color:var(--maroon)}
+ul.habits{padding-left:20px;margin:8px 0}
+ul.habits li{margin:6px 0}
+
+/* checklists */
+.progress{margin:6px 0 16px}
+.progress .row{display:flex;justify-content:space-between;align-items:baseline;font-size:.9rem;color:var(--ink-2)}
+.progress .row b{font:600 1.5rem var(--serif);color:var(--maroon)}
+.track{height:10px;background:var(--ivory-2);border-radius:99px;overflow:hidden;border:1px solid var(--line)}
+.track i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--gold-2));transition:width .35s}
+.week{margin-top:14px}
+.week h3{display:flex;justify-content:space-between;align-items:baseline}
+.week h3 small{font:500 .8rem var(--sans);color:var(--ink-2)}
+ul.check{list-style:none;padding:0;margin:0}
+ul.check li{border-top:1px solid var(--line)}
+ul.check li:first-child{border-top:0}
+ul.check label{display:flex;gap:14px;align-items:center;min-height:56px;padding:8px 2px;cursor:pointer}
+ul.check input{appearance:none;-webkit-appearance:none;flex:none;width:28px;height:28px;margin:0;border-radius:8px;
+  border:2px solid var(--gold);background:var(--card);display:grid;place-items:center;cursor:pointer}
+ul.check input::after{content:"";width:12px;height:7px;border:3px solid var(--ivory);border-top:0;border-right:0;
+  transform:rotate(-45deg) translate(1px,-1px);opacity:0}
+ul.check input:checked{background:var(--maroon);border-color:var(--maroon)}
+ul.check input:checked::after{opacity:1}
+ul.check input:checked + span{color:var(--ink-2);text-decoration:line-through;text-decoration-color:var(--gold-2)}
+.btn{font:600 .9rem var(--sans);min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--gold-2);
+  background:var(--card);color:var(--maroon);cursor:pointer}
+.btn-row{display:flex;justify-content:flex-end;margin-top:10px}
+
+/* notes */
+textarea{width:100%;min-height:220px;resize:vertical;padding:14px;border-radius:12px;border:1px solid var(--line);
+  background:var(--ivory);font:16px/1.55 var(--sans);color:var(--ink)}
+textarea:focus{outline:2px solid var(--gold-2);outline-offset:1px}
+.saved{font-size:.82rem;color:var(--ink-2);min-height:1.3em;margin-top:6px}
+
+footer{text-align:center;padding:16px 16px calc(28px + env(safe-area-inset-bottom));color:var(--ink-2)}
+footer svg{width:56px;color:var(--gold-2);display:block;margin:0 auto 6px}
+footer p{font:italic 500 1.15rem var(--serif);color:var(--maroon);margin:0}
+</style>
+</head>
+<body>
+
+<!-- Reusable SVG motifs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="bell" viewBox="0 0 40 46">
+      <line x1="20" y1="0" x2="20" y2="8" stroke="currentColor" stroke-width="2"/>
+      <circle cx="20" cy="26" r="17" fill="currentColor"/>
+      <rect x="7" y="15" width="26" height="2.5" rx="1.25" fill="#fff" opacity=".3"/>
+      <rect x="6" y="31" width="28" height="3" rx="1.5" fill="var(--maroon)" opacity=".85"/>
+    </symbol>
+    <symbol id="paisley" viewBox="0 0 100 140">
+      <path d="M50 135C18 135 4 108 8 82 13 50 44 34 58 20 66 12 66 4 60 2c18 4 34 24 34 54 0 44-20 79-44 79z"
+            fill="none" stroke="currentColor" stroke-width="3"/>
+      <path d="M50 118c-20 0-30-17-27-34 3-20 22-31 32-41 10 12 18 28 17 44-1 18-9 31-22 31z"
+            fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="48" cy="86" r="9" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="48" cy="86" r="3" fill="currentColor"/>
+    </symbol>
+    <symbol id="divider" viewBox="0 0 300 14">
+      <line x1="0" y1="7" x2="128" y2="7" stroke="currentColor" stroke-width="1"/>
+      <line x1="172" y1="7" x2="300" y2="7" stroke="currentColor" stroke-width="1"/>
+      <circle cx="138" cy="7" r="3" fill="currentColor"/>
+      <circle cx="150" cy="7" r="5" fill="currentColor"/>
+      <circle cx="162" cy="7" r="3" fill="currentColor"/>
+    </symbol>
+    <symbol id="chev" viewBox="0 0 24 24">
+      <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="hero">
+  <svg class="paisley l" style="color:var(--gold-2)"><use href="#paisley"/></svg>
+  <svg class="paisley r" style="color:var(--gold-2)"><use href="#paisley"/></svg>
+  <!-- Ghungroo string -->
+  <svg class="bells" viewBox="0 0 220 70" aria-hidden="true" style="color:var(--gold-2)">
+    <path d="M6 8 Q110 34 214 8" fill="none" stroke="currentColor" stroke-width="2"/>
+    <use href="#bell" x="22"  y="12" width="26" height="30"/>
+    <use href="#bell" x="58"  y="20" width="30" height="35"/>
+    <use href="#bell" x="94"  y="23" width="32" height="38"/>
+    <use href="#bell" x="132" y="20" width="30" height="35"/>
+    <use href="#bell" x="172" y="12" width="26" height="30"/>
+  </svg>
+  <p class="eyebrow">For <span class="her-name">[Her name]</span></p>
+  <h1>Your path to beautiful dance films</h1>
+  <p class="hi">Learn to film and edit kathak the way it deserves to be seen.</p>
+</header>
+
+<nav class="top" aria-label="Sections">
+  <ul>
+    <li><a href="#editing">Editing</a></li>
+    <li><a href="#apps">Edits &amp; CapCut</a></li>
+    <li><a href="#shooting">Shooting</a></li>
+    <li><a href="#plan">4-Week Plan</a></li>
+    <li><a href="#shoot-day">Shoot Day</a></li>
+    <li><a href="#notes">Notes</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- 1. EDITING -->
+<details class="sec" id="editing" open>
+  <summary><span class="num">1</span><h2>What good editing is</h2><svg class="chev"><use href="#chev"/></svg></summary>
+  <div class="body">
+    <svg class="divider"><use href="#divider"/></svg>
+    <p class="muted">Good editing is invisible. Every cut happens for a reason (a beat, a movement, a feeling), so the viewer simply feels the dance.</p>
+
+    <h3>Learn from the masters</h3>
+    <ul class="res">
+      <li><span class="kind">Book</span>
+        <b><i>In the Blink of an Eye</i>, Walter Murch</b>
+        <span class="muted">A short, beautiful book on why a cut works. His "Rule of Six" puts emotion first, then story, then rhythm.</span></li>
+      <li><span class="kind">YouTube</span>
+        <b>Every Frame a Painting</b>
+        <span class="muted">Watch the Jackie Chan episode on filming movement: let the action play in a wide shot, and cut on the hit.</span><br>
+        <a class="go" href="https://www.youtube.com/results?search_query=every+frame+a+painting+jackie+chan">Find the Jackie Chan episode ↗</a></li>
+      <li><span class="kind">Course</span>
+        <b>Mike Tyus: Filming Dance Videos</b>
+        <span class="muted">A dancer-filmmaker's masterclass on framing, camera movement and rhythm.</span><br>
+        <a class="go" href="https://www.dance-masterclass.com/filming-dance-videos-by-mike-tyus">Open the course ↗</a></li>
+    </ul>
+
+    <h3>Kathak editing patterns</h3>
+    <div class="cards">
+      <div class="card"><span class="ic">01 · Hook</span><h4>Hook in the first 1–2 seconds</h4>
+        <p>Open on a chakkar mid-spin or the sound of ghungroo before anything else, so viewers stop scrolling.</p></div>
+      <div class="card"><span class="ic">02 · Rhythm</span><h4>Cut on the beat</h4>
+        <p>Time your cuts to the tabla bols, and land a cut exactly on the final "dha" of a tihai.</p></div>
+      <div class="card"><span class="ic">03 · Flow</span><h4>Cut on motion</h4>
+        <p>Cut in the middle of a spin, so the spin started in one shot finishes in the next. The movement carries the viewer across the cut.</p></div>
+      <div class="card"><span class="ic">04 · Variety</span><h4>Mix shot sizes</h4>
+        <p>Use wide shots for full phrases, and close-ups for footwork, hastas (hands) and abhinaya (expression).</p></div>
+      <div class="card"><span class="ic">05 · Breath</span><h4>Don't cut mid-phrase</h4>
+        <p>Let complete movements breathe. A tukda shown whole is more powerful than a chopped-up one.</p></div>
+      <div class="card"><span class="ic">06 · Drama</span><h4>Speed-ramp into slow-mo</h4>
+        <p>Ramp into slow motion on spins and finishing poses, then snap back to normal speed on the beat.</p></div>
+    </div>
+  </div>
+</details>
+
+<!-- 2. APPS -->
+<details class="sec" id="apps">
+  <summary><span class="num">2</span><h2>Using Edits and CapCut</h2><svg class="chev"><use href="#chev"/></svg></summary>
+  <div class="body">
+    <svg class="divider"><use href="#divider"/></svg>
+    <ul class="res">
+      <li><span class="kind">Free series · 20 episodes</span>
+        <b>Instagram's Edits tutorials, hosted by Adrian Per</b>
+        <span class="muted">Find them in the Tutorials section on the Edits website, and on Instagram's @creators account.</span><br>
+        <a class="go" href="https://www.instagram.com/creators/">@creators on Instagram ↗</a></li>
+      <li><span class="kind">Official</span>
+        <b>CapCut beginner tutorial</b>
+        <span class="muted">CapCut's own step-by-step guide for beginners, on capcut.com (look under Resources / Tutorials).</span><br>
+        <a class="go" href="https://www.capcut.com/">Go to capcut.com ↗</a></li>
+      <li><span class="kind">Skillshare course</span>
+        <b>CapCut for Desktop: The Ultimate Video Editing Course for Reels and TikTok Creators</b><br>
+        <a class="go" href="https://www.skillshare.com/en/search?query=CapCut%20for%20Desktop%20Ultimate%20Video%20Editing%20Course">Find it on Skillshare ↗</a></li>
+    </ul>
+    <div class="tip"><strong>Which app when?</strong> <b>Edits</b> is the simplest for Instagram: you edit and post in one place. <b>CapCut</b> has more effects plus beat-sync tools that mark the beats in your music for you, which is perfect for cutting to tabla.</div>
+  </div>
+</details>
+
+<!-- 3. SHOOTING -->
+<details class="sec" id="shooting">
+  <summary><span class="num">3</span><h2>Shooting</h2><svg class="chev"><use href="#chev"/></svg></summary>
+  <div class="body">
+    <svg class="divider"><use href="#divider"/></svg>
+
+    <h3>DJI Osmo Pocket 4</h3>
+    <ul class="habits">
+      <li><b>4K / 240 fps slow-motion</b>: for chakkars, ghungroo close-ups and the moment of a finishing pose.</li>
+      <li><b>ActiveTrack 7.0</b>: draw a box around yourself on the screen and the camera follows you across the floor.</li>
+      <li><b>Spin Shot</b>: the camera rotates as you film. It's made for chakkars.</li>
+      <li><b>Dynamic Framing</b>: re-frames automatically to keep you well composed.</li>
+      <li><b>10-bit D-Log</b>: a flat-looking recording that keeps more colour detail, so you can grade warm, rich tones later.</li>
+    </ul>
+    <a class="go" href="https://www.youtube.com/@DJI">DJI feature tutorials on YouTube ↗</a>
+
+    <h3>iPhone 17 Pro Max</h3>
+    <p class="muted">Free <b>"Today at Apple"</b> video sessions run in UK Apple Stores, and you can book one online.</p>
+    <a class="go" href="https://www.apple.com/uk/today/">Book a Today at Apple session ↗</a>
+    <ul class="habits">
+      <li><b>Long-press the screen</b> to lock focus and exposure (AE/AF Lock), so the picture doesn't pulse as you move.</li>
+      <li><b>Shoot in good light</b>: face a window, or use soft light from the front and side.</li>
+      <li><b>Use the main 1× lens in dim spaces.</b> It's the sharpest and handles low light best.</li>
+      <li><b>Use a tripod</b> for wide, fixed shots of full phrases.</li>
+    </ul>
+
+    <h3>The two-camera setup</h3>
+    <div class="cards">
+      <div class="card"><span class="ic">Camera A</span><h4>iPhone on a tripod</h4><p>The wide master shot, running the whole time, with your full body in frame.</p></div>
+      <div class="card"><span class="ic">Camera B</span><h4>Pocket 4 handheld</h4><p>Moving close-ups: feet, hands, face and spins.</p></div>
+    </div>
+    <div class="tip"><strong>In the edit:</strong> start on the wide shot. Cut to a close-up for detail on a bol, and cut back to the wide shot for the tihai. Clap once on camera at the start so you can line up both clips' audio.</div>
+  </div>
+</details>
+
+<!-- 4. PLAN -->
+<details class="sec" id="plan">
+  <summary><span class="num">4</span><h2>Your 4-week plan</h2><svg class="chev"><use href="#chev"/></svg></summary>
+  <div class="body">
+    <svg class="divider"><use href="#divider"/></svg>
+    <div class="progress" aria-live="polite">
+      <div class="row"><span>Your progress</span><b id="planPct">0%</b></div>
+      <div class="track"><i id="planBar"></i></div>
+    </div>
+    <div id="planWeeks"></div>
+  </div>
+</details>
+
+<!-- 5. SHOOT DAY -->
+<details class="sec" id="shoot-day">
+  <summary><span class="num">5</span><h2>Shoot-day checklist</h2><svg class="chev"><use href="#chev"/></svg></summary>
+  <div class="body">
+    <svg class="divider"><use href="#divider"/></svg>
+    <ul class="check" id="shootList"></ul>
+    <div class="btn-row"><button class="btn" id="shootReset" type="button">Clear for next shoot</button></div>
+  </div>
+</details>
+
+<!-- NOTES -->
+<details class="sec" id="notes">
+  <summary><span class="num">✎</span><h2>Notes &amp; shot ideas</h2><svg class="chev"><use href="#chev"/></svg></summary>
+  <div class="body">
+    <svg class="divider"><use href="#divider"/></svg>
+    <textarea id="notesBox" placeholder="Shot ideas, songs, locations, outfits…"></textarea>
+    <div class="saved" id="notesSaved"></div>
+  </div>
+</details>
+
+</main>
+
+<footer>
+  <svg viewBox="0 0 300 14" aria-hidden="true"><use href="#divider"/></svg>
+  <p>Made with love for <span class="her-name">[Her name]</span></p>
+</footer>
+
+<script>
+(function () {
+  // ✏️ Put her name here: it fills the welcome line and the footer.
+  var HER_NAME = "[Her name]";
+  document.querySelectorAll(".her-name").forEach(function (el) { el.textContent = HER_NAME; });
+
+  // ---------- Safe localStorage ----------
+  var store = {
+    get: function (k, d) { try { var v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+    set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } }
+  };
+
+  // ---------- External links open in a new tab ----------
+  document.querySelectorAll('a[href^="http"]').forEach(function (a) {
+    a.target = "_blank"; a.rel = "noopener noreferrer";
+  });
+
+  // ---------- Checklists ----------
+  var PLAN = [
+    { week: "Week 1", focus: "Foundations", items: [
+      "Watch Edits tutorial episodes 1–5",
+      "Film one 15-second phrase on the iPhone tripod" ] },
+    { week: "Week 2", focus: "Learn & practise", items: [
+      "Work through Mike Tyus's Filming Dance Videos course",
+      "Practise Pocket 4 ActiveTrack subject tracking",
+      "Practise Pocket 4 slow-motion (4K / 240 fps)" ] },
+    { week: "Week 3", focus: "Two cameras", items: [
+      "Do a two-camera shoot (iPhone wide + Pocket 4 close-ups)",
+      "Edit it to the beat in Edits" ] },
+    { week: "Week 4", focus: "Compare & publish", items: [
+      "Re-edit the same clip in CapCut",
+      "Compare the Edits and CapCut versions side by side",
+      "Post the best one 🎉" ] }
+  ];
+  var SHOOT = [
+    "Batteries charged (iPhone, Pocket 4, power bank)",
+    "Lenses wiped clean",
+    "Storage cleared on both cameras",
+    "Light checked",
+    "Music file ready",
+    "Outfit and ghungroo ready",
+    "Tripod packed"
+  ];
+
+  function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+  function itemsHTML(prefix, items, done) {
+    return items.map(function (t, i) {
+      var id = prefix + i;
+      return '<li><label><input type="checkbox" data-id="' + id + '"' + (done[id] ? " checked" : "") +
+             '><span>' + esc(t) + '</span></label></li>';
+    }).join("");
+  }
+
+  var planDone = store.get("kg-plan", {});
+  var shootDone = store.get("kg-shoot", {});
+
+  document.getElementById("planWeeks").innerHTML = PLAN.map(function (w, wi) {
+    return '<div class="week"><h3>' + w.week + ' <small>' + w.focus + '</small></h3><ul class="check">' +
+           itemsHTML("w" + wi + "-", w.items, planDone) + '</ul></div>';
+  }).join("");
+  document.getElementById("shootList").innerHTML = itemsHTML("s", SHOOT, shootDone);
+
+  var planTotal = PLAN.reduce(function (n, w) { return n + w.items.length; }, 0);
+  function updateProgress() {
+    var n = document.querySelectorAll("#planWeeks input:checked").length;
+    var pct = Math.round(n / planTotal * 100);
+    document.getElementById("planPct").textContent = pct + "%";
+    document.getElementById("planBar").style.width = pct + "%";
+  }
+  updateProgress();
+
+  document.addEventListener("change", function (e) {
+    var c = e.target;
+    if (!c.dataset || !c.dataset.id) return;
+    var inPlan = !!c.closest("#planWeeks");
+    var state = inPlan ? planDone : shootDone;
+    if (c.checked) state[c.dataset.id] = true; else delete state[c.dataset.id];
+    store.set(inPlan ? "kg-plan" : "kg-shoot", state);
+    if (inPlan) updateProgress();
+  });
+
+  document.getElementById("shootReset").addEventListener("click", function () {
+    shootDone = {};
+    store.set("kg-shoot", shootDone);
+    document.querySelectorAll("#shootList input").forEach(function (c) { c.checked = false; });
+  });
+
+  // ---------- Notes (auto-save) ----------
+  var box = document.getElementById("notesBox"), saved = document.getElementById("notesSaved"), timer;
+  box.value = store.get("kg-notes", "");
+  box.addEventListener("input", function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      saved.textContent = store.set("kg-notes", box.value) ? "Saved ✓" : "Couldn't save on this device (private browsing?)";
+    }, 400);
+  });
+
+  // ---------- Nav: open the section you jump to, highlight the current one ----------
+  var links = document.querySelectorAll("nav.top a");
+  links.forEach(function (a) {
+    a.addEventListener("click", function () {
+      var sec = document.querySelector(a.getAttribute("href"));
+      if (sec) sec.open = true;
+    });
+  });
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        links.forEach(function (a) {
+          var on = a.getAttribute("href") === "#" + en.target.id;
+          a.classList.toggle("active", on);
+          if (on && a.scrollIntoView) a.scrollIntoView({ block: "nearest", inline: "center" });
+        });
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    document.querySelectorAll("details.sec").forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>
