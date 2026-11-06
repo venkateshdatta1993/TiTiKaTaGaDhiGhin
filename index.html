@@ -171,7 +171,7 @@ footer p{font:italic 500 1.15rem var(--serif);color:var(--maroon);margin:0}
     <use href="#bell" x="132" y="20" width="30" height="35"/>
     <use href="#bell" x="172" y="12" width="26" height="30"/>
   </svg>
-  <p class="eyebrow">For <span class="her-name">[Her name]</span></p>
+  <p class="eyebrow">A kathak learning guide</p>
   <h1>Your path to beautiful dance films</h1>
   <p class="hi">Learn to film and edit kathak the way it deserves to be seen.</p>
 </header>
@@ -323,15 +323,11 @@ footer p{font:italic 500 1.15rem var(--serif);color:var(--maroon);margin:0}
 
 <footer>
   <svg viewBox="0 0 300 14" aria-hidden="true"><use href="#divider"/></svg>
-  <p>Made with love for <span class="her-name">[Her name]</span></p>
+  <p>Made with love</p>
 </footer>
 
 <script>
 (function () {
-  // ✏️ Put her name here: it fills the welcome line and the footer.
-  var HER_NAME = "[Her name]";
-  document.querySelectorAll(".her-name").forEach(function (el) { el.textContent = HER_NAME; });
-
   // ---------- Safe localStorage ----------
   var store = {
     get: function (k, d) { try { var v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
