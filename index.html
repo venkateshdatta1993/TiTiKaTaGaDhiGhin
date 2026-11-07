@@ -95,7 +95,7 @@ ul.habits li{margin:6px 0}
 /* checklists */
 .progress{margin:6px 0 16px}
 .progress .row{display:flex;justify-content:space-between;align-items:baseline;font-size:.9rem;color:var(--ink-2)}
-.progress .row b{font:600 1.5rem var(--serif);color:var(--maroon)}
+.progress .row b{font:600 1.5rem var(--serif);font-variant-numeric:lining-nums;color:var(--maroon)}
 .track{height:10px;background:var(--ivory-2);border-radius:99px;overflow:hidden;border:1px solid var(--line)}
 .track i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--gold-2));transition:width .35s}
 .week{margin-top:14px}
@@ -125,6 +125,35 @@ textarea:focus{outline:2px solid var(--gold-2);outline-offset:1px}
 footer{text-align:center;padding:16px 16px calc(28px + env(safe-area-inset-bottom));color:var(--ink-2)}
 footer svg{width:56px;color:var(--gold-2);display:block;margin:0 auto 6px}
 footer p{font:italic 500 1.15rem var(--serif);color:var(--maroon);margin:0}
+
+/* overall progress (hero) */
+.overall{max-width:420px;margin:20px auto 0;text-align:left}
+.ov-row{display:flex;justify-content:space-between;align-items:baseline;font-size:.85rem;color:#ead9c0}
+.ov-row b{font:600 1.35rem var(--serif);font-variant-numeric:lining-nums;color:var(--gold-2)}
+.ov-track{height:8px;border-radius:99px;background:rgba(255,255,255,.14);overflow:hidden;margin-top:4px}
+.ov-track i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--gold-2));transition:width .35s}
+
+/* per-section counter */
+.count{flex:none;font:600 .78rem var(--sans);color:var(--ink-2);background:var(--ivory-2);border:1px solid var(--line);
+  border-radius:999px;padding:3px 9px;font-variant-numeric:tabular-nums}
+.count.full{background:var(--maroon);border-color:var(--maroon);color:var(--ivory)}
+
+/* "done" toggles on resources, patterns and camera skills */
+.res li[data-done], ul.habits li[data-done], .card[data-done]{position:relative;padding-right:56px}
+ul.habits li[data-done]{list-style:none;margin-left:-20px;min-height:44px}
+.res li[data-done]{min-height:56px}
+.tick{position:absolute;top:6px;right:0;width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer;
+  display:grid;place-items:center}
+.tick::before{content:"";width:30px;height:30px;border-radius:50%;border:2px solid var(--gold);background:var(--card);box-sizing:border-box}
+.tick::after{content:"";position:absolute;width:12px;height:7px;border:3px solid var(--ivory);border-top:0;border-right:0;
+  transform:translate(0,-2px) rotate(-45deg);opacity:0}
+.tick[aria-pressed="true"]::before{background:var(--maroon);border-color:var(--maroon)}
+.tick[aria-pressed="true"]::after{opacity:1}
+.card .tick{top:8px;right:8px}
+.card.is-done{background:var(--gold-soft)}
+.done-note{display:block;font-size:.75rem;font-weight:600;color:var(--gold);letter-spacing:.04em;margin-top:2px}
+
+.btn.ghost{margin-top:14px;border-color:var(--line);color:var(--ink-2);font-weight:500}
 </style>
 </head>
 <body>
@@ -174,6 +203,10 @@ footer p{font:italic 500 1.15rem var(--serif);color:var(--maroon);margin:0}
   <p class="eyebrow">A kathak learning guide</p>
   <h1>Your path to beautiful dance films</h1>
   <p class="hi">Learn to film and edit kathak the way it deserves to be seen.</p>
+  <div class="overall" aria-live="polite">
+    <div class="ov-row"><span id="ovText">Tick things off as you go</span><b id="ovPct">0%</b></div>
+    <div class="ov-track"><i id="ovBar"></i></div>
+  </div>
 </header>
 
 <nav class="top" aria-label="Sections">
@@ -191,21 +224,21 @@ footer p{font:italic 500 1.15rem var(--serif);color:var(--maroon);margin:0}
 
 <!-- 1. EDITING -->
 <details class="sec" id="editing" open>
-  <summary><span class="num">1</span><h2>What good editing is</h2><svg class="chev"><use href="#chev"/></svg></summary>
+  <summary><span class="num">1</span><h2>What good editing is</h2><span class="count" data-count></span><svg class="chev"><use href="#chev"/></svg></summary>
   <div class="body">
     <svg class="divider"><use href="#divider"/></svg>
     <p class="muted">Good editing is invisible. Every cut happens for a reason (a beat, a movement, a feeling), so the viewer simply feels the dance.</p>
 
     <h3>Learn from the masters</h3>
     <ul class="res">
-      <li><span class="kind">Book</span>
+      <li data-done="res-murch"><span class="kind">Book</span>
         <b><i>In the Blink of an Eye</i>, Walter Murch</b>
         <span class="muted">A short, beautiful book on why a cut works. His "Rule of Six" puts emotion first, then story, then rhythm.</span></li>
-      <li><span class="kind">YouTube</span>
+      <li data-done="res-efap"><span class="kind">YouTube</span>
         <b>Every Frame a Painting</b>
         <span class="muted">Watch the Jackie Chan episode on filming movement: let the action play in a wide shot, and cut on the hit.</span><br>
         <a class="go" href="https://www.youtube.com/results?search_query=every+frame+a+painting+jackie+chan">Find the Jackie Chan episode ↗</a></li>
-      <li><span class="kind">Course</span>
+      <li data-done="res-tyus"><span class="kind">Course</span>
         <b>Mike Tyus: Filming Dance Videos</b>
         <span class="muted">A dancer-filmmaker's masterclass on framing, camera movement and rhythm.</span><br>
         <a class="go" href="https://www.dance-masterclass.com/filming-dance-videos-by-mike-tyus">Open the course ↗</a></li>
@@ -213,17 +246,17 @@ footer p{font:italic 500 1.15rem var(--serif);color:var(--maroon);margin:0}
 
     <h3>Kathak editing patterns</h3>
     <div class="cards">
-      <div class="card"><span class="ic">01 · Hook</span><h4>Hook in the first 1–2 seconds</h4>
+      <div class="card" data-done="pat-1" data-verb="Tried"><span class="ic">01 · Hook</span><h4>Hook in the first 1–2 seconds</h4>
         <p>Open on a chakkar mid-spin or the sound of ghungroo before anything else, so viewers stop scrolling.</p></div>
-      <div class="card"><span class="ic">02 · Rhythm</span><h4>Cut on the beat</h4>
+      <div class="card" data-done="pat-2" data-verb="Tried"><span class="ic">02 · Rhythm</span><h4>Cut on the beat</h4>
         <p>Time your cuts to the tabla bols, and land a cut exactly on the final "dha" of a tihai.</p></div>
-      <div class="card"><span class="ic">03 · Flow</span><h4>Cut on motion</h4>
+      <div class="card" data-done="pat-3" data-verb="Tried"><span class="ic">03 · Flow</span><h4>Cut on motion</h4>
         <p>Cut in the middle of a spin, so the spin started in one shot finishes in the next. The movement carries the viewer across the cut.</p></div>
-      <div class="card"><span class="ic">04 · Variety</span><h4>Mix shot sizes</h4>
+      <div class="card" data-done="pat-4" data-verb="Tried"><span class="ic">04 · Variety</span><h4>Mix shot sizes</h4>
         <p>Use wide shots for full phrases, and close-ups for footwork, hastas (hands) and abhinaya (expression).</p></div>
-      <div class="card"><span class="ic">05 · Breath</span><h4>Don't cut mid-phrase</h4>
+      <div class="card" data-done="pat-5" data-verb="Tried"><span class="ic">05 · Breath</span><h4>Don't cut mid-phrase</h4>
         <p>Let complete movements breathe. A tukda shown whole is more powerful than a chopped-up one.</p></div>
-      <div class="card"><span class="ic">06 · Drama</span><h4>Speed-ramp into slow-mo</h4>
+      <div class="card" data-done="pat-6" data-verb="Tried"><span class="ic">06 · Drama</span><h4>Speed-ramp into slow-mo</h4>
         <p>Ramp into slow motion on spins and finishing poses, then snap back to normal speed on the beat.</p></div>
     </div>
   </div>
@@ -231,19 +264,19 @@ footer p{font:italic 500 1.15rem var(--serif);color:var(--maroon);margin:0}
 
 <!-- 2. APPS -->
 <details class="sec" id="apps">
-  <summary><span class="num">2</span><h2>Using Edits and CapCut</h2><svg class="chev"><use href="#chev"/></svg></summary>
+  <summary><span class="num">2</span><h2>Using Edits and CapCut</h2><span class="count" data-count></span><svg class="chev"><use href="#chev"/></svg></summary>
   <div class="body">
     <svg class="divider"><use href="#divider"/></svg>
     <ul class="res">
-      <li><span class="kind">Free series · 20 episodes</span>
+      <li data-done="res-edits"><span class="kind">Free series · 20 episodes</span>
         <b>Instagram's Edits tutorials, hosted by Adrian Per</b>
         <span class="muted">Find them in the Tutorials section on the Edits website, and on Instagram's @creators account.</span><br>
         <a class="go" href="https://www.instagram.com/creators/">@creators on Instagram ↗</a></li>
-      <li><span class="kind">Official</span>
+      <li data-done="res-capcut"><span class="kind">Official</span>
         <b>CapCut beginner tutorial</b>
         <span class="muted">CapCut's own step-by-step guide for beginners, on capcut.com (look under Resources / Tutorials).</span><br>
         <a class="go" href="https://www.capcut.com/">Go to capcut.com ↗</a></li>
-      <li><span class="kind">Skillshare course</span>
+      <li data-done="res-skillshare"><span class="kind">Skillshare course</span>
         <b>CapCut for Desktop: The Ultimate Video Editing Course for Reels and TikTok Creators</b><br>
         <a class="go" href="https://www.skillshare.com/en/search?query=CapCut%20for%20Desktop%20Ultimate%20Video%20Editing%20Course">Find it on Skillshare ↗</a></li>
     </ul>
@@ -253,17 +286,17 @@ footer p{font:italic 500 1.15rem var(--serif);color:var(--maroon);margin:0}
 
 <!-- 3. SHOOTING -->
 <details class="sec" id="shooting">
-  <summary><span class="num">3</span><h2>Shooting</h2><svg class="chev"><use href="#chev"/></svg></summary>
+  <summary><span class="num">3</span><h2>Shooting</h2><span class="count" data-count></span><svg class="chev"><use href="#chev"/></svg></summary>
   <div class="body">
     <svg class="divider"><use href="#divider"/></svg>
 
     <h3>DJI Osmo Pocket 4</h3>
     <ul class="habits">
-      <li><b>4K / 240 fps slow-motion</b>: for chakkars, ghungroo close-ups and the moment of a finishing pose.</li>
-      <li><b>ActiveTrack 7.0</b>: draw a box around yourself on the screen and the camera follows you across the floor.</li>
-      <li><b>Spin Shot</b>: the camera rotates as you film. It's made for chakkars.</li>
-      <li><b>Dynamic Framing</b>: re-frames automatically to keep you well composed.</li>
-      <li><b>10-bit D-Log</b>: a flat-looking recording that keeps more colour detail, so you can grade warm, rich tones later.</li>
+      <li data-done="pk-1" data-verb="Learnt"><b>4K / 240 fps slow-motion</b>: for chakkars, ghungroo close-ups and the moment of a finishing pose.</li>
+      <li data-done="pk-2" data-verb="Learnt"><b>ActiveTrack 7.0</b>: draw a box around yourself on the screen and the camera follows you across the floor.</li>
+      <li data-done="pk-3" data-verb="Learnt"><b>Spin Shot</b>: the camera rotates as you film. It's made for chakkars.</li>
+      <li data-done="pk-4" data-verb="Learnt"><b>Dynamic Framing</b>: re-frames automatically to keep you well composed.</li>
+      <li data-done="pk-5" data-verb="Learnt"><b>10-bit D-Log</b>: a flat-looking recording that keeps more colour detail, so you can grade warm, rich tones later.</li>
     </ul>
     <a class="go" href="https://www.youtube.com/@DJI">DJI feature tutorials on YouTube ↗</a>
 
@@ -271,10 +304,10 @@ footer p{font:italic 500 1.15rem var(--serif);color:var(--maroon);margin:0}
     <p class="muted">Free <b>"Today at Apple"</b> video sessions run in UK Apple Stores, and you can book one online.</p>
     <a class="go" href="https://www.apple.com/uk/today/">Book a Today at Apple session ↗</a>
     <ul class="habits">
-      <li><b>Long-press the screen</b> to lock focus and exposure (AE/AF Lock), so the picture doesn't pulse as you move.</li>
-      <li><b>Shoot in good light</b>: face a window, or use soft light from the front and side.</li>
-      <li><b>Use the main 1× lens in dim spaces.</b> It's the sharpest and handles low light best.</li>
-      <li><b>Use a tripod</b> for wide, fixed shots of full phrases.</li>
+      <li data-done="ip-1" data-verb="Learnt"><b>Long-press the screen</b> to lock focus and exposure (AE/AF Lock), so the picture doesn't pulse as you move.</li>
+      <li data-done="ip-2" data-verb="Learnt"><b>Shoot in good light</b>: face a window, or use soft light from the front and side.</li>
+      <li data-done="ip-3" data-verb="Learnt"><b>Use the main 1× lens in dim spaces.</b> It's the sharpest and handles low light best.</li>
+      <li data-done="ip-4" data-verb="Learnt"><b>Use a tripod</b> for wide, fixed shots of full phrases.</li>
     </ul>
 
     <h3>The two-camera setup</h3>
@@ -288,7 +321,7 @@ footer p{font:italic 500 1.15rem var(--serif);color:var(--maroon);margin:0}
 
 <!-- 4. PLAN -->
 <details class="sec" id="plan">
-  <summary><span class="num">4</span><h2>Your 4-week plan</h2><svg class="chev"><use href="#chev"/></svg></summary>
+  <summary><span class="num">4</span><h2>Your 4-week plan</h2><span class="count" data-count></span><svg class="chev"><use href="#chev"/></svg></summary>
   <div class="body">
     <svg class="divider"><use href="#divider"/></svg>
     <div class="progress" aria-live="polite">
@@ -301,7 +334,7 @@ footer p{font:italic 500 1.15rem var(--serif);color:var(--maroon);margin:0}
 
 <!-- 5. SHOOT DAY -->
 <details class="sec" id="shoot-day">
-  <summary><span class="num">5</span><h2>Shoot-day checklist</h2><svg class="chev"><use href="#chev"/></svg></summary>
+  <summary><span class="num">5</span><h2>Shoot-day checklist</h2><span class="count" data-count></span><svg class="chev"><use href="#chev"/></svg></summary>
   <div class="body">
     <svg class="divider"><use href="#divider"/></svg>
     <ul class="check" id="shootList"></ul>
@@ -324,6 +357,7 @@ footer p{font:italic 500 1.15rem var(--serif);color:var(--maroon);margin:0}
 <footer>
   <svg viewBox="0 0 300 14" aria-hidden="true"><use href="#divider"/></svg>
   <p>Made with love</p>
+  <button class="btn ghost" id="resetAll" type="button">Start over (clear all ticks)</button>
 </footer>
 
 <script>
@@ -409,6 +443,65 @@ footer p{font:italic 500 1.15rem var(--serif);color:var(--maroon);margin:0}
     store.set("kg-shoot", shootDone);
     document.querySelectorAll("#shootList input").forEach(function (c) { c.checked = false; });
   });
+
+  // ---------- "Done" toggles + progress counters ----------
+  var done = store.get("kg-done", {});
+
+  document.querySelectorAll("[data-done]").forEach(function (el) {
+    var id = el.dataset.done, verb = el.dataset.verb || "Done";
+    var title = (el.querySelector("b, h4") || el).textContent.trim();
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "tick";
+    btn.setAttribute("aria-label", "Mark “" + title + "” as " + verb.toLowerCase());
+    var note = document.createElement("span"); note.className = "done-note";
+    function paint() {
+      var on = !!done[id];
+      btn.setAttribute("aria-pressed", on);
+      el.classList.toggle("is-done", on);
+      note.textContent = on ? "✓ " + verb + " " + done[id] : "";
+    }
+    btn.addEventListener("click", function () {
+      if (done[id]) delete done[id];
+      else done[id] = new Date().toLocaleDateString(undefined, { day: "numeric", month: "short" });
+      store.set("kg-done", done);
+      paint(); updateCounts();
+    });
+    el.appendChild(btn); el.appendChild(note); paint();
+  });
+
+  function tally(root) {
+    var ticks = root.querySelectorAll(".tick"), boxes = root.querySelectorAll("ul.check input");
+    var n = 0;
+    ticks.forEach(function (t) { if (t.getAttribute("aria-pressed") === "true") n++; });
+    boxes.forEach(function (b) { if (b.checked) n++; });
+    return [n, ticks.length + boxes.length];
+  }
+  function updateCounts() {
+    document.querySelectorAll("details.sec").forEach(function (sec) {
+      var c = sec.querySelector("[data-count]"); if (!c) return;
+      var t = tally(sec);
+      c.textContent = t[0] + "/" + t[1];
+      c.classList.toggle("full", t[0] === t[1]);
+    });
+    // Overall progress leaves out the shoot-day list, which is reused for every shoot
+    var all = tally(document.querySelector("main")), shoot = tally(document.getElementById("shootList"));
+    var n = all[0] - shoot[0], total = all[1] - shoot[1], pct = Math.round(n / total * 100);
+    document.getElementById("ovText").textContent = n === 0 ? "Tick things off as you go" : n + " of " + total + " steps done";
+    document.getElementById("ovPct").textContent = pct + "%";
+    document.getElementById("ovBar").style.width = pct + "%";
+  }
+  updateCounts();
+  document.addEventListener("change", updateCounts);
+  document.getElementById("shootReset").addEventListener("click", updateCounts);
+
+  document.getElementById("resetAll").addEventListener("click", function () {
+    if (!confirm("Clear all ticks and progress? Your notes will be kept.")) return;
+    ["kg-done", "kg-plan", "kg-shoot"].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} });
+    location.reload();
+  });
+
+  // Ask the browser to keep this data rather than clear it when space runs low
+  try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(function () {}); } catch (e) {}
 
   // ---------- Notes (auto-save) ----------
   var box = document.getElementById("notesBox"), saved = document.getElementById("notesSaved"), timer;
