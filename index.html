@@ -154,6 +154,24 @@ ul.habits li[data-done]{list-style:none;margin-left:-20px;min-height:44px}
 .done-note{display:block;font-size:.75rem;font-weight:600;color:var(--gold);letter-spacing:.04em;margin-top:2px}
 
 .btn.ghost{margin-top:14px;border-color:var(--line);color:var(--ink-2);font-weight:500}
+
+/* numbered steps */
+ol.steps{list-style:none;padding:0;margin:8px 0;counter-reset:st}
+ol.steps li{counter-increment:st;position:relative;padding:12px 56px 12px 46px;border-top:1px solid var(--line)}
+ol.steps li:first-child{border-top:0}
+ol.steps.plain li{padding-right:0}
+ol.steps li::before{content:counter(st);position:absolute;left:0;top:12px;width:32px;height:32px;border-radius:50%;
+  display:grid;place-items:center;background:var(--gold-soft);border:1px solid var(--gold-2);
+  font:600 1.05rem var(--serif);font-variant-numeric:lining-nums;color:var(--maroon)}
+ol.steps li > .muted{display:block}
+ol.steps .tick{top:8px}
+
+/* reel shape */
+.arc{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+@media (min-width:560px){.arc{grid-template-columns:repeat(4,1fr)}}
+.arc div{background:var(--ivory);border:1px solid var(--line);border-top:3px solid var(--gold-2);border-radius:10px;padding:10px}
+.arc b{display:block;font:600 1.15rem var(--serif);color:var(--maroon)}
+.arc span{font-size:.85rem;color:var(--ink-2)}
 </style>
 </head>
 <body>
@@ -214,6 +232,8 @@ ul.habits li[data-done]{list-style:none;margin-left:-20px;min-height:44px}
     <li><a href="#editing">Editing</a></li>
     <li><a href="#apps">Edits &amp; CapCut</a></li>
     <li><a href="#shooting">Shooting</a></li>
+    <li><a href="#music">Cutting to Music</a></li>
+    <li><a href="#colour">Colour &amp; Light</a></li>
     <li><a href="#plan">4-Week Plan</a></li>
     <li><a href="#shoot-day">Shoot Day</a></li>
     <li><a href="#notes">Notes</a></li>
@@ -267,6 +287,7 @@ ul.habits li[data-done]{list-style:none;margin-left:-20px;min-height:44px}
   <summary><span class="num">2</span><h2>Using Edits and CapCut</h2><span class="count" data-count></span><svg class="chev"><use href="#chev"/></svg></summary>
   <div class="body">
     <svg class="divider"><use href="#divider"/></svg>
+    <h3>Official tutorials &amp; courses</h3>
     <ul class="res">
       <li data-done="res-edits"><span class="kind">Free series · 20 episodes</span>
         <b>Instagram's Edits tutorials, hosted by Adrian Per</b>
@@ -279,6 +300,35 @@ ul.habits li[data-done]{list-style:none;margin-left:-20px;min-height:44px}
       <li data-done="res-skillshare"><span class="kind">Skillshare course</span>
         <b>CapCut for Desktop: The Ultimate Video Editing Course for Reels and TikTok Creators</b><br>
         <a class="go" href="https://www.skillshare.com/en/search?query=CapCut%20for%20Desktop%20Ultimate%20Video%20Editing%20Course">Find it on Skillshare ↗</a></li>
+    </ul>
+    <h3>More tutorials</h3>
+    <p class="muted">Edits is new (2025) and changes often, so filter YouTube results by <b>upload date</b> to get the latest version of the app.</p>
+    <ul class="res">
+      <li data-done="tut-search"><span class="kind">Search</span>
+        <b>Short Edits how-tos</b>
+        <span class="muted">Creators post 30-second "how I made this transition in Edits" videos.</span><br>
+        <a class="go" href="https://www.youtube.com/results?search_query=instagram+edits+app+tutorial">YouTube: Edits app tutorial ↗</a><br>
+        <a class="go" href="https://www.instagram.com/explore/tags/editsapp/">Instagram: #editsapp ↗</a></li>
+      <li data-done="tut-primal"><span class="kind">Mobile editing</span>
+        <b>Primal Video (Justin Brown)</b>
+        <span class="muted">Clear, step-by-step phone-editing tutorials, including CapCut.</span><br>
+        <a class="go" href="https://www.youtube.com/results?search_query=primal+video+capcut">Find Primal Video ↗</a></li>
+      <li data-done="tut-kevin"><span class="kind">Beginner CapCut</span>
+        <b>Kevin Stratvert</b>
+        <span class="muted">Very beginner-friendly CapCut walkthroughs.</span><br>
+        <a class="go" href="https://www.youtube.com/results?search_query=kevin+stratvert+capcut">Find Kevin Stratvert ↗</a></li>
+      <li data-done="tut-milgram"><span class="kind">Dance film</span>
+        <b>Tim Milgram</b>
+        <span class="muted">A dance filmmaker explaining how he shoots and cuts dance pieces.</span><br>
+        <a class="go" href="https://www.youtube.com/results?search_query=tim+milgram+dance+film">Find Tim Milgram ↗</a></li>
+      <li data-done="tut-stalman"><span class="kind">iPhone &amp; colour</span>
+        <b>Tyler Stalman</b>
+        <span class="muted">iPhone filmmaking and simple, practical colour work.</span><br>
+        <a class="go" href="https://www.youtube.com/results?search_query=tyler+stalman+iphone+video">Find Tyler Stalman ↗</a></li>
+      <li data-done="tut-mckinnon"><span class="kind">Cinematic style</span>
+        <b>Peter McKinnon</b>
+        <span class="muted">Cinematic B-roll, transitions and colour, in an accessible style.</span><br>
+        <a class="go" href="https://www.youtube.com/results?search_query=peter+mckinnon+b-roll+transitions">Find Peter McKinnon ↗</a></li>
     </ul>
     <div class="tip"><strong>Which app when?</strong> <b>Edits</b> is the simplest for Instagram: you edit and post in one place. <b>CapCut</b> has more effects plus beat-sync tools that mark the beats in your music for you, which is perfect for cutting to tabla.</div>
   </div>
@@ -319,9 +369,106 @@ ul.habits li[data-done]{list-style:none;margin-left:-20px;min-height:44px}
   </div>
 </details>
 
-<!-- 4. PLAN -->
+<!-- 4. CUTTING TO MUSIC -->
+<details class="sec" id="music">
+  <summary><span class="num">4</span><h2>Cutting to music</h2><span class="count" data-count></span><svg class="chev"><use href="#chev"/></svg></summary>
+  <div class="body">
+    <svg class="divider"><use href="#divider"/></svg>
+    <p class="muted">Turning separate clips into one beautiful, on-beat video is mostly planned <b>before</b> you film. The edit then just puts the pieces together.</p>
+
+    <h3>Before you film</h3>
+    <ol class="steps">
+      <li data-done="mu-play" data-verb="Tried"><b>Film to the music</b>
+        <span class="muted">This is the biggest secret. Play the actual song out loud during <i>every</i> take, in every outfit and location. You dance the same choreography at the same moment of the song each time, so every clip lines up and you can cut from garden to studio mid-phrase.</span></li>
+      <li data-done="mu-angles" data-verb="Tried"><b>Same phrase, many angles</b>
+        <span class="muted">Dance the same 15 seconds once wide, once close on the feet, once on the face and hands, and once from a low angle. Then you have a choice of shots at every beat.</span></li>
+      <li data-done="mu-broll" data-verb="Tried"><b>Shoot B-roll</b>
+        <span class="muted">Short detail shots with no full dance: ghungroo being tied, a mudra, the ghera flaring, feet on the floor, light through a window. They set the mood and cover imperfect moments.</span></li>
+      <li data-done="mu-consistent" data-verb="Tried"><b>Keep it consistent</b>
+        <span class="muted">Use the same frame rate, the same camera height and similar light across takes, so clips filmed at different times feel like one film.</span></li>
+    </ol>
+
+    <h3>In the edit</h3>
+    <ul class="habits">
+      <li data-done="mu-beats" data-verb="Learnt"><b>Mark the beats</b>: CapCut's <b>Beats / Auto beat</b> marks them for you; in Edits, add beat markers by hand.</li>
+      <li data-done="mu-sam" data-verb="Learnt"><b>Cut on strong beats</b>, especially the <i>sam</i> and the final <i>dha</i> of a tihai.</li>
+      <li data-done="mu-motion" data-verb="Learnt"><b>Cut during movement</b>: a spin starts in one clip and finishes in the next, so the cut disappears.</li>
+    </ul>
+
+    <h3>Transitions that hide the cut</h3>
+    <div class="cards">
+      <div class="card" data-done="tr-chakkar" data-verb="Tried"><span class="ic">Signature</span><h4>Chakkar transition</h4>
+        <p>Spin in outfit A, cut mid-spin, and finish the spin in outfit B or a new place. This is the classic dance-reel move.</p></div>
+      <div class="card" data-done="tr-cover" data-verb="Tried"><span class="ic">Cover</span><h4>Hand or dupatta wipe</h4>
+        <p>Sweep a hand or dupatta across the lens. The next clip starts with it sweeping away.</p></div>
+      <div class="card" data-done="tr-whip" data-verb="Tried"><span class="ic">Energy</span><h4>Whip pan</h4>
+        <p>Move the camera fast at the end of one clip and the start of the next, in the same direction.</p></div>
+      <div class="card" data-done="tr-match" data-verb="Tried"><span class="ic">Elegant</span><h4>Match cut</h4>
+        <p>End on a pose, then begin the next clip in the same pose somewhere else.</p></div>
+    </div>
+
+    <h3>Give the reel a shape</h3>
+    <div class="arc">
+      <div><b>Hook</b><span>0–2 sec: the most striking moment</span></div>
+      <div><b>Build</b><span>Rising energy, mixed shots</span></div>
+      <div><b>Peak</b><span>Fastest footwork or a tihai</span></div>
+      <div><b>Resolve</b><span>A held final pose</span></div>
+    </div>
+    <div class="tip"><strong>Slow motion is a spice, not the meal:</strong> save it for a spin or the final pose, so it still feels special.</div>
+  </div>
+</details>
+
+<!-- 5. COLOUR & LIGHT -->
+<details class="sec" id="colour">
+  <summary><span class="num">5</span><h2>Colour &amp; light</h2><span class="count" data-count></span><svg class="chev"><use href="#chev"/></svg></summary>
+  <div class="body">
+    <svg class="divider"><use href="#divider"/></svg>
+    <div class="cards">
+      <div class="card"><span class="ic">Step 1</span><h4>Colour correction</h4><p>Fix the footage: correct brightness and accurate colours.</p></div>
+      <div class="card"><span class="ic">Step 2</span><h4>Colour grading</h4><p>Give it a look: warm and golden, moody, or soft. Always correct first, then grade.</p></div>
+    </div>
+
+    <h3>The order to adjust</h3>
+    <p class="muted">Use the <b>Adjust</b> panel in Edits or CapCut, in this order:</p>
+    <ol class="steps plain">
+      <li><b>Exposure / brightness</b>
+        <span class="muted">Her face should be clearly lit. Lower <b>highlights</b> to bring back a bright window; raise <b>shadows</b> to see into dark corners.</span></li>
+      <li><b>White balance</b> (temperature / tint)
+        <span class="muted">Make whites look white. Indoor bulbs make footage orange; shade makes it blue.</span></li>
+      <li><b>Contrast</b>
+        <span class="muted">Add a little for depth. Too much makes skin harsh.</span></li>
+      <li><b>Saturation / vibrance</b>
+        <span class="muted">Go gently; vibrance is kinder to skin. Costumes and gold jewellery pop easily.</span></li>
+      <li><b>Then add a look</b>
+        <span class="muted">A filter or LUT, with its strength lowered to 30–60%.</span></li>
+    </ol>
+
+    <h3>Making separate clips match</h3>
+    <ul class="habits">
+      <li>Correct one "hero" clip until it looks right, then copy those settings to the others. CapCut has <b>Apply to all</b> and adjustment layers.</li>
+      <li>Then nudge each clip so <b>skin tones</b> match. They're what viewers notice most.</li>
+    </ul>
+
+    <h3>Camera tips</h3>
+    <ul class="habits">
+      <li><b>Pocket 4 D-Log</b> looks grey and flat on purpose. Apply DJI's official LUT first (it converts the footage to normal colour), then adjust.</li>
+      <li><b>iPhone HDR video</b> can look very different from other clips once posted. If iPhone and Pocket 4 clips don't match, try turning off <b>Settings → Camera → Record Video → HDR Video</b> for dance shoots.</li>
+    </ul>
+
+    <h3>Practise</h3>
+    <ul class="habits">
+      <li data-done="co-order"><b>Correct one clip</b> in order: exposure → white balance → contrast → saturation.</li>
+      <li data-done="co-match"><b>Colour-match two clips</b> from different cameras.</li>
+      <li data-done="co-lut"><b>Apply DJI's LUT</b> to a D-Log clip.</li>
+      <li data-done="co-hdr"><b>Film a test</b> with iPhone HDR Video off and compare.</li>
+    </ul>
+    <div class="tip"><strong>Light is easier to fix while filming than afterwards.</strong> Use one consistent light source (window light is beautiful), don't mix daylight with yellow bulbs, and lock exposure with a long-press on the iPhone.</div>
+  </div>
+</details>
+
+<!-- 6. PLAN -->
 <details class="sec" id="plan">
-  <summary><span class="num">4</span><h2>Your 4-week plan</h2><span class="count" data-count></span><svg class="chev"><use href="#chev"/></svg></summary>
+  <summary><span class="num">6</span><h2>Your 4-week plan</h2><span class="count" data-count></span><svg class="chev"><use href="#chev"/></svg></summary>
   <div class="body">
     <svg class="divider"><use href="#divider"/></svg>
     <div class="progress" aria-live="polite">
@@ -332,9 +479,9 @@ ul.habits li[data-done]{list-style:none;margin-left:-20px;min-height:44px}
   </div>
 </details>
 
-<!-- 5. SHOOT DAY -->
+<!-- 7. SHOOT DAY -->
 <details class="sec" id="shoot-day">
-  <summary><span class="num">5</span><h2>Shoot-day checklist</h2><span class="count" data-count></span><svg class="chev"><use href="#chev"/></svg></summary>
+  <summary><span class="num">7</span><h2>Shoot-day checklist</h2><span class="count" data-count></span><svg class="chev"><use href="#chev"/></svg></summary>
   <div class="body">
     <svg class="divider"><use href="#divider"/></svg>
     <ul class="check" id="shootList"></ul>
@@ -384,7 +531,8 @@ ul.habits li[data-done]{list-style:none;margin-left:-20px;min-height:44px}
       "Practise Pocket 4 slow-motion (4K / 240 fps)" ] },
     { week: "Week 3", focus: "Two cameras", items: [
       "Do a two-camera shoot (iPhone wide + Pocket 4 close-ups)",
-      "Edit it to the beat in Edits" ] },
+      "Edit it to the beat in Edits",
+      "Try one chakkar outfit transition" ] },
     { week: "Week 4", focus: "Compare & publish", items: [
       "Re-edit the same clip in CapCut",
       "Compare the Edits and CapCut versions side by side",
@@ -397,7 +545,9 @@ ul.habits li[data-done]{list-style:none;margin-left:-20px;min-height:44px}
     "Light checked",
     "Music file ready",
     "Outfit and ghungroo ready",
-    "Tripod packed"
+    "Tripod packed",
+    "Speaker to play the song on set",
+    "Shot list ready (angles + B-roll)"
   ];
 
   function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
